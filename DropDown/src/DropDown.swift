@@ -616,7 +616,13 @@ extension DropDown {
 	public func reloadAllComponents() {
 		tableView.reloadData()
 		setNeedsUpdateConstraints()
+        deselectRowAtIndexPath(selectedRowIndex)
 	}
+    
+    //Fix function for ObjC
+    public func selectRowAtIndex(index:Int){
+        selectRowAtIndex(index)
+    }
 	
 	/// (Pre)selects a row at a certain index.
 	public func selectRowAtIndex(index: Index?) {
@@ -632,6 +638,11 @@ extension DropDown {
 		selectedRowIndex = index
 	}
 	
+    //Fix function for ObjC
+    public func deselectRowAtIndexPath(index:Int){
+        deselectRowAtIndexPath(index)
+    }
+    
 	public func deselectRowAtIndexPath(index: Index?) {
 		selectedRowIndex = nil
 		
@@ -641,6 +652,11 @@ extension DropDown {
 		
 		tableView.deselectRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0), animated: true)
 	}
+    
+    //Fix function for ObjC
+    public var indexForSelectedRowForObjC:Int{
+        return (tableView.indexPathForSelectedRow?.row)!;
+    }
 	
 	/// Returns the index of the selected row.
 	public var indexForSelectedRow: Index? {
