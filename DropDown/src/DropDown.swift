@@ -621,7 +621,7 @@ extension DropDown {
     
     //Fix function for ObjC
     public func selectRowAtIndex(index:Int){
-        selectRowAtIndex(index)
+        selectRowAtIndex(Optional(index))
     }
 	
 	/// (Pre)selects a row at a certain index.
@@ -640,7 +640,7 @@ extension DropDown {
 	
     //Fix function for ObjC
     public func deselectRowAtIndexPath(index:Int){
-        deselectRowAtIndexPath(index)
+        deselectRowAtIndexPath(Optional(index))
     }
     
 	public func deselectRowAtIndexPath(index: Index?) {
