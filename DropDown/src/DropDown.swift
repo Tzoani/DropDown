@@ -657,7 +657,7 @@ extension DropDown {
     public var indexForSelectedRowForObjC:Int{
         let row = tableView.indexPathForSelectedRow?.row;
         if row == nil {
-            return 0
+            return -1
         }
         return (Int)(row!)
     }
