@@ -655,7 +655,11 @@ extension DropDown {
     
     //Fix function for ObjC
     public var indexForSelectedRowForObjC:Int{
-        return (tableView.indexPathForSelectedRow?.row)!;
+        let row = tableView.indexPathForSelectedRow?.row;
+        if row == nil {
+            return 0
+        }
+        return (Int)(row!)
     }
 	
 	/// Returns the index of the selected row.
