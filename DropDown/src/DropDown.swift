@@ -96,7 +96,7 @@ public final class DropDown: UIView {
 	
 	Defaults to `anchorView.bounds.width - offset.x`.
 	*/
-    public var dropDownWitdth:CGFloat = 0;
+    public var dropDownWidth:CGFloat = 0;
 	public var width: CGFloat? {
 		didSet { setNeedsUpdateConstraints() }
 	}
@@ -460,11 +460,11 @@ extension DropDown {
 		
 		let width = self.width ?? (anchorView?.bounds.width ?? 0) - bottomOffset.x
 		
-        if self.dropDownWitdth == 0 {
+        if self.dropDownWidth == 0 {
             return (x, y, width, offscreenHeight)
         }
         else{
-            return (x, y, self.dropDownWitdth, offscreenHeight)
+            return (x, y, self.dropDownWidth, offscreenHeight)
         }
 	}
 	
@@ -486,11 +486,11 @@ extension DropDown {
 		
 		let width = self.width ?? (anchorView?.bounds.width ?? 0) - topOffset.x
         
-        if self.dropDownWitdth == 0 {
+        if self.dropDownWidth == 0 {
             return (x, y, width, offscreenHeight)
         }
         else{
-            return (x, y, self.dropDownWitdth, offscreenHeight)
+            return (x, y, self.dropDownWidth, offscreenHeight)
         }
 	}
 	
