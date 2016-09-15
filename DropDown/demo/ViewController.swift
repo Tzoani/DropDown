@@ -44,7 +44,7 @@ class ViewController: UIViewController {
 	
 	@IBAction func showOrDismiss(_ sender: AnyObject) {
 		if dropDown.isHidden {
-			dropDown.show()
+            _ = dropDown.show()
 		} else {
 			dropDown.hide()
 		}

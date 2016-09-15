@@ -339,7 +339,7 @@ extension DropDown {
 		addSubview(dismissableView)
 		dismissableView.translatesAutoresizingMaskIntoConstraints = false
 		
-		addUniversalConstraints(format: "|[dismissableView]|", views: ["dismissableView": dismissableView])
+		addUniversalConstraints("|[dismissableView]|", views: ["dismissableView": dismissableView])
 		
 		
 		// Table view container
@@ -390,7 +390,7 @@ extension DropDown {
 		tableViewContainer.addSubview(tableView)
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		
-		tableViewContainer.addUniversalConstraints(format: "|[tableView]|", views: ["tableView": tableView])
+		tableViewContainer.addUniversalConstraints("|[tableView]|", views: ["tableView": tableView])
 	}
 	
 	public override func layoutSubviews() {
@@ -411,11 +411,11 @@ extension DropDown {
 		if let window = UIWindow.visibleWindow() {
 			switch direction {
 			case .any:
-				layout = computeLayoutBottomDisplay(window: window)
+				layout = computeLayoutBottomDisplay(window)
 				direction = .bottom
 				
 				if layout.offscreenHeight > 0 {
-					let topLayout = computeLayoutForTopDisplay(window: window)
+					let topLayout = computeLayoutForTopDisplay(window)
 					
 					if topLayout.offscreenHeight < layout.offscreenHeight {
 						layout = topLayout
@@ -423,10 +423,10 @@ extension DropDown {
 					}
 				}
 			case .bottom:
-				layout = computeLayoutBottomDisplay(window: window)
+				layout = computeLayoutBottomDisplay(window)
 				direction = .bottom
 			case .top:
-				layout = computeLayoutForTopDisplay(window: window)
+				layout = computeLayoutForTopDisplay(window)
 				direction = .top
 			}
 		}
@@ -437,7 +437,7 @@ extension DropDown {
 		return (layout.x, layout.y, layout.width, layout.offscreenHeight, visibleHeight, canBeDisplayed, direction)
 	}
 	
-	fileprivate func computeLayoutBottomDisplay(window: UIWindow) -> ComputeLayoutTuple {
+	fileprivate func computeLayoutBottomDisplay(_ window: UIWindow) -> ComputeLayoutTuple {
 		var offscreenHeight: CGFloat = 0
 		
 		let anchorViewX = (anchorView?.windowFrame?.minX ?? 0)
@@ -468,7 +468,7 @@ extension DropDown {
         }
 	}
 	
-	fileprivate func computeLayoutForTopDisplay(window: UIWindow) -> ComputeLayoutTuple {
+	fileprivate func computeLayoutForTopDisplay(_ window: UIWindow) -> ComputeLayoutTuple {
 		var offscreenHeight: CGFloat = 0
 		
 		let anchorViewX = (anchorView?.windowFrame?.minX ?? 0)
@@ -543,7 +543,7 @@ extension DropDown {
 		visibleWindow?.bringSubview(toFront: self)
 		
 		self.translatesAutoresizingMaskIntoConstraints = false
-		visibleWindow?.addUniversalConstraints(format: "|[dropDown]|", views: ["dropDown": self])
+		visibleWindow?.addUniversalConstraints("|[dropDown]|", views: ["dropDown": self])
 		
 		let layout = computeLayout()
 		
@@ -666,7 +666,7 @@ extension DropDown {
     
     //Fix function for ObjC
     public var indexForSelectedRowForObjC:Int{
-        let row = (tableView.indexPathForSelectedRow as NSIndexPath?)?.row;
+        let row = (tableView.indexPathForSelectedRow as IndexPath?)?.row;
         if row == nil {
             return -1
         }
@@ -675,12 +675,12 @@ extension DropDown {
 	
 	/// Returns the index of the selected row.
 	public var indexForSelectedRow: Index? {
-		return (tableView.indexPathForSelectedRow as NSIndexPath?)?.row
+		return (tableView.indexPathForSelectedRow as IndexPath?)?.row
 	}
 	
 	/// Returns the selected item.
 	public var selectedItem: String? {
-		guard let row = (tableView.indexPathForSelectedRow as NSIndexPath?)?.row else { return nil }
+		guard let row = (tableView.indexPathForSelectedRow as IndexPath?)?.row else { return nil }
 		
 		return dataSource[row]
 	}

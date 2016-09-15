@@ -12,13 +12,13 @@ import UIKit
 
 internal extension UIView {
 	
-	func addConstraints(format: String, options: NSLayoutFormatOptions = [], metrics: [String: AnyObject]? = nil, views: [String: UIView]) {
+	func addConstraints(_ format: String, options: NSLayoutFormatOptions = [], metrics: [String: AnyObject]? = nil, views: [String: UIView]) {
 		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: options, metrics: metrics, views: views))
 	}
 	
-	func addUniversalConstraints(format: String, options: NSLayoutFormatOptions = [], metrics: [String: AnyObject]? = nil, views: [String: UIView]) {
-		addConstraints(format: "H:\(format)", options: options, metrics: metrics, views: views)
-		addConstraints(format: "V:\(format)", options: options, metrics: metrics, views: views)
+	func addUniversalConstraints(_ format: String, options: NSLayoutFormatOptions = [], metrics: [String: AnyObject]? = nil, views: [String: UIView]) {
+		addConstraints("H:\(format)", options: options, metrics: metrics, views: views)
+		addConstraints("V:\(format)", options: options, metrics: metrics, views: views)
 	}
 	
 }
