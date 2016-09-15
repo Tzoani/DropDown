@@ -27,7 +27,7 @@ class ViewController: UIViewController {
 		]
 		
 		dropDown.selectionAction = { [unowned self] (index, item) in
-			self.actionButton.setTitle(item, forState: .Normal)
+			self.actionButton.setTitle(item, for: UIControlState())
 		}
 		
 //		dropDown.cancelAction = { [unowned self] in
@@ -42,8 +42,8 @@ class ViewController: UIViewController {
 //		dropDown.selectRowAtIndex(3)
 	}
 	
-	@IBAction func showOrDismiss(sender: AnyObject) {
-		if dropDown.hidden {
+	@IBAction func showOrDismiss(_ sender: AnyObject) {
+		if dropDown.isHidden {
 			dropDown.show()
 		} else {
 			dropDown.hide()
